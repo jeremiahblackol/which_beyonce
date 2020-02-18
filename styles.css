@@ -1,0 +1,77 @@
+* {
+  border: 2px solid green;
+}
+body {
+  border: 3px solid blue;
+  position: absolute;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Left section */
+.left-side {
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  height: 89%;
+  width: 25%;
+  border: 3px solid orange;
+}
+.matches-found {
+  width: 100%;
+  height: 15%;
+  background: yellow;
+}
+
+.match-count {
+  width: 100%;
+  height: 15%;
+  background: blue;
+}
+
+.matched-images {
+  width: 100%;
+  height: 25%;
+  background: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.image-box1 {
+  display: flex;
+  justify-content: space-evenly;
+}
+.image-box2 {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.small-image {
+  width: 3em;
+  height: 4em;
+  background: white;
+}
+
+.top-times-section {
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+}
+
+/* Right section */
+.right-side {
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  height: 89%;
+  border: solid 3px red;
+  width: 74%;
+}
+header {
+  position: absolute;
+  height: 10%;
+  width: 100%;
+  border: 3px solid black;
+  text-align: center;
+}
