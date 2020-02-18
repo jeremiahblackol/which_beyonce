@@ -1,5 +1,7 @@
+<<<<<<< HEAD
 * {
   border: 2px solid green;
+  font-family: 'Lacquer', sans-serif;
 }
 body {
   border: 3px solid blue;
@@ -74,4 +76,5 @@ header {
   width: 100%;
   border: 3px solid black;
   text-align: center;
+
 }
