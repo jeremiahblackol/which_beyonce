@@ -1,19 +1,41 @@
 class Deck {
   constructor(){
-    this.selectedCards = []
-    this.matched = []
+    this.selectedCards = [];
+    this.matched = [];
     this.cards = []
   }
+
 shuffle(){
-// use this.cards to randomize ex:Math.floor(Math.random() * 5)
+this.cards = shuffle(this.cards);
+
 }
+
 checkSelected(){
 // if card.selected = true THEN push into the selectedCards array
 }
+
 moveToMatched(){
-// IF card.matched is true THEN move the card into this.matched.push(card)
+
 }
 addCards(card){
   this.cards.push(card);
 }
+createDeck() {
+  var images = [
+  'assets/rza-.jpg',
+  'assets/tumblr_kwq0plYMaS1qzcv0zo1_500.jpg',
+  'assets/ghostface-killah.jpg',
+  'assets/gza-the-lost-art-of-lyricism-op-ed-feat.jpg',
+  'assets/dirty.png',
+  'assets/rza-.jpg',
+  'assets/tumblr_kwq0plYMaS1qzcv0zo1_500.jpg',
+  'assets/ghostface-killah.jpg',
+  'assets/gza-the-lost-art-of-lyricism-op-ed-feat.jpg',
+  'assets/dirty.png'
+];
+for (var i = 0; i < images.length; i++) {
+  var card = new Card(images[i]);
+  this.cards.push(card);
+  }
+ }
 }
