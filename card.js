@@ -3,8 +3,12 @@ class Card {
     this.matchedInfo = matchedInfo;
     this.matched = false;
     this.selected = false;
+
   }
   match(){
 
   }
+  // attachImage() {
+  //
+  // }
 }
