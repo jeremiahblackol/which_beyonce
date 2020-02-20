@@ -148,7 +148,7 @@ header {
 }
 
 .winner-page {
-  display: none;
+  /* display: none; */
   position: absolute;
   background-image:url('assets/Wu-Tang-Clan-logo.jpg');
   background-repeat: no-repeat;
@@ -190,5 +190,11 @@ h3 {
   margin-left: 25%;
 }
 #page1{
-  /* display: none */
+  display: none
+}
+button{
+  cursor: pointer;
+}
+button:hover{
+  color: #ffd706
 }
