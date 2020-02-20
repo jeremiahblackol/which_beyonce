@@ -7,14 +7,18 @@ class Deck {
 
 shuffle(){
 this.cards = shuffle(this.cards);
+
 }
 
 checkSelected(){
-
+// if card.selected = true THEN push into the selectedCards array
 }
 
 moveToMatched(){
 
+}
+addCards(card){
+  this.cards.push(card);
 }
 createDeck() {
   var images = [
