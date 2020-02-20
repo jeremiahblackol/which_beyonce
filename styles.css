@@ -112,31 +112,31 @@ header {
 }
 
 .image-slant1 {
-  transform: translatex(-3em) rotate(10deg);
+  transform: translatex(5em) rotate(10deg);
 }
 .image-slant2 {
-  transform: translateY(4em) rotate(-9deg);
+  transform: translateY(13em) rotate(-9deg);
 }
 .image-slant3 {
-  transform: translateX(2em) rotate(23deg);
+  transform: translateY(22em) rotate(23deg);
 }
 .image-slant4 {
   transform: translateX(-4em) rotate(7deg);
 }
 .image-slant5 {
-  transform: translateY(1em) rotate(-13deg);
+  transform: translateY(6em) rotate(-13deg);
 }
 .image-slant6 {
-  transform: translateY(-7em)rotate(-6deg);
+  transform: translateY(-5em)rotate(-6deg);
 }
 .image-slant7 {
-  transform: translateY(6em) rotate(15deg);
+  transform: translateY(8em) translateX(-4em) rotate(15deg);
 }
 .image-slant8 {
-  transform: translateY(4em) rotate(17deg);
+  transform: translateY(21em) translateY(-25em) rotate(17deg);
 }
 .image-slant9 {
-  transform: translateX(-21em) rotate(-13deg);
+  transform: translateX(45em) rotate(-13deg);
 }
 .image-slant10 {
   transform: rotate(-6deg);
