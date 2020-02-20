@@ -37,7 +37,7 @@ function addCardsToDOM(){
 
 function chooseCard() {
   if(event.target.id === 'card') {
-    console.log('hello')
+    console.log('hello');
   }
 }
 
