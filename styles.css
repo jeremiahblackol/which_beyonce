@@ -32,6 +32,7 @@ header {
   text-align: center;
 }
 .matches-found {
+  font-size: 25px;
   width: 100%;
   height: 5%;
   background: black;
@@ -78,6 +79,12 @@ header {
   position: absolute;
   text-align: center;
 }
+.top-times-top{
+  font-size: 22px;
+}
+.top-times{
+  font-size: 19px;
+}
 
 /* Right section */
 .right-side {
@@ -91,8 +98,13 @@ header {
   align-items: center;
   background: grey;
 }
-
+#card:hover{
+  box-shadow: 3px 3px 3px 3px #ffd706;
+  height: 11em;
+  width:8.5em;
+}
 #card {
+  cursor: pointer;
   height: 10em;
   width: 8em;
   margin-top: 2em;
@@ -136,16 +148,22 @@ header {
 }
 
 .winner-page {
-  display: none;
+  /* display: none; */
   position: absolute;
+  background-image:url('assets/Wu-Tang-Clan-logo.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
   height: 89%;
   width: 100%;
   bottom: 0;
-  background: white;
   text-align: center;
 }
 .congrats{
+  color: white;
   font-size: 7em;
+}
+.congrats2{
+  color:white;
 }
 
 h2{
@@ -170,4 +188,13 @@ h3 {
   width: 50%;
   justify-content: space-around;
   margin-left: 25%;
+}
+#page1{
+  display: none
+}
+button{
+  cursor: pointer;
+}
+button:hover{
+  color: #ffd706
 }
