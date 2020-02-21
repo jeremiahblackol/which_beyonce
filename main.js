@@ -11,6 +11,7 @@ window.onload = invokeDeck();
 function invokeDeck() {
   deck.createDeck();
   addStyle();
+  console.log(deck.cards);
   addCardsToDOM();
 }
 
@@ -33,20 +34,32 @@ function addStyle(){
 }
 
 function addCardsToDOM(){
-
 for (var i = 0; i < deck.cards.length; i++){
+  console.log(deck.cards[i]);
   rightSide.insertAdjacentHTML('beforeend',
-  `<div class=${deck.cards[i].style}><img id="card" src=${deck.cards[i].matchedInfo}>
+  `<div class=${deck.cards[i].style}>
+  <img class=${deck.cards[i].style}
+  id="card"src= assets/Wu-Tang-Clan-logo.jpg>
   </div>`)
-}
+  }
 }
 
 
 function chooseCard() {
-  if(event.target.id === 'card') {
-    console.log('hello');
+  // var cardImgSrc = '';
+  for(var i = 0; i < deck.cards.length; i++){
+    if(event.target.classList.contains(deck.cards[i].style)) {
+      event.target.src = deck.cards[i].matchedInfo;
+      deck.checkSelected(deck.cards[i]);
+      console.log(event.target);
+      console.log(event.target.classList);
+      // console.log(deck.cards[i]);
+    //the card src = card.mathcedInfo
+    // console.log(cardImgSrc);
+    }
   }
 }
+
 
 function restartGame() {
   if(event.target.name === 'play-again' || event.target.name === 'new-game') {
