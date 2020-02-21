@@ -10,16 +10,28 @@ shuffle(){
 }
 
 checkSelected(card){
-  if(this.selectedCards.length < 3){
-// if card.selected = true THEN push into the selectedCards array
+  if(this.selectedCards.length < 2){
   card.selected = true;
   this.selectedCards.push(card);
   }
 }
 
-moveToMatched(){
-
+removeSelected(){
+  if(this.selectedCards[0].matchedInfo !== this.selectedCards[1].matchedInfo){
+    this.selectedCards[0].selected = false;
+    this.selectedCards[1].selected = false;
+    this.selectedCards = [];
+  }
 }
+
+// moveToMatched(){
+//   for(var i = 0; i < this.selectedCards.length; i++){
+//   if(this.selectedCards[i].matchedInfo === this.selectedCards[i].matchedInfo){
+//     this.matched.push(this.selectedCards[i])
+//     }
+//   }
+// }
+
 addCards(){
 
 }

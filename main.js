@@ -46,19 +46,34 @@ for (var i = 0; i < deck.cards.length; i++){
 
 
 function chooseCard() {
-  // var cardImgSrc = '';
   for(var i = 0; i < deck.cards.length; i++){
-    if(event.target.classList.contains(deck.cards[i].style)) {
+    if(event.target.classList.contains(deck.cards[i].style) && deck.selectedCards.length < 2) {
       event.target.src = deck.cards[i].matchedInfo;
       deck.checkSelected(deck.cards[i]);
-      console.log(event.target);
-      console.log(event.target.classList);
-      // console.log(deck.cards[i]);
-    //the card src = card.mathcedInfo
-    // console.log(cardImgSrc);
+      // removeCardFromSelected(event);
+      }
+      if(event.target.classList.contains(deck.cards[i].style) && deck.selectedCards.length === 2){
+          deck.removeSelected();
+          event.target.src = 'assets/Wu-Tang-Clan-logo.jpg';
     }
   }
 }
+
+// function removeCardFromSelected(event){
+//   // for(var i = 0; i < deck.cards.length; i++){
+//   // if(event.target.classList.contains(deck.cards[i].style)
+//   //   && event.target.src ===  deck.cards[i].matchedInfo) {
+//   //   event.target.src = 'assets/Wu-Tang-Clan-logo.jpg';
+//     deck.removeSelected();
+//     // }
+//   // }
+// }
+
+// function checkMatched(){
+//   deck.moveToMatched();
+// }
+
+
 
 
 function restartGame() {
