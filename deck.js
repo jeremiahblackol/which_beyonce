@@ -10,13 +10,24 @@ shuffle(){
 }
 
 checkSelected(card){
-  if(this.selectedCards.length < 2){
+  if(this.selectedCards.length === 0){
   card.selected = true;
   this.selectedCards.push(card);
-  }
+} else if (this.selectedCards.length === 1) {
+  card.selected = true;
+  this.selectedCards.push(card);
+} else if (this.selectedCards[0].matchedInfo !== card.matchedInfo){
+  this.removeSelected();
+}
+// } else if {
+//
+// } else if(this.selectedCards[0].matchedInfo === this.selectedCards[1].matchedInfo){
+//   this.matched.push(this.selectedCards);
+// }
+//   }
 }
 
-removeSelected(){
+removeSelected(card){
   if(this.selectedCards[0].matchedInfo !== this.selectedCards[1].matchedInfo){
     this.selectedCards[0].selected = false;
     this.selectedCards[1].selected = false;

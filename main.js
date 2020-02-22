@@ -51,27 +51,27 @@ function chooseCard() {
       event.target.src = deck.cards[i].matchedInfo;
       deck.checkSelected(deck.cards[i]);
       // removeCardFromSelected(event);
-      }
-      if(event.target.classList.contains(deck.cards[i].style) && deck.selectedCards.length === 2){
-          deck.removeSelected();
+    } else if (event.target.classList.contains(deck.cards[i].style) && deck.selectedCards.length === 2){
           event.target.src = 'assets/Wu-Tang-Clan-logo.jpg';
     }
   }
 }
 
-// function removeCardFromSelected(event){
-//   // for(var i = 0; i < deck.cards.length; i++){
-//   // if(event.target.classList.contains(deck.cards[i].style)
-//   //   && event.target.src ===  deck.cards[i].matchedInfo) {
-//   //   event.target.src = 'assets/Wu-Tang-Clan-logo.jpg';
-//     deck.removeSelected();
-//     // }
-//   // }
-// }
+function removeCardFromSelected(event){
+  for(var i = 0; i < deck.cards.length; i++){
+  if(event.target.classList.contains(deck.cards[i].style) && event.target.src !==  deck.cards[i].matchedInfo) {
+    event.target.src = 'assets/Wu-Tang-Clan-logo.jpg';
+     deck.removeSelected();
+   } else {
+     deck.matched.push(deck.selectedCards[0]);
+     deck.matched.push(deck.selectedCards[1]);
+   }
+   }
+}
 
-// function checkMatched(){
-//   deck.moveToMatched();
-// }
+function checkMatched(){
+  deck.moveToMatched();
+}
 
 
 
