@@ -8,40 +8,26 @@ class Deck {
 shuffle(){
 
 }
-
-checkSelected(card){
+  checkSelected(card){
   if(this.selectedCards.length === 0){
   card.selected = true;
   this.selectedCards.push(card);
-} else if (this.selectedCards.length === 1) {
+  } else if (this.selectedCards.length === 1) {
   card.selected = true;
   this.selectedCards.push(card);
-} else if (this.selectedCards[0].matchedInfo !== card.matchedInfo){
+  } else if (this.selectedCards[0].matchedInfo !== card.matchedInfo){
   this.removeSelected();
-}
-// } else if {
-//
-// } else if(this.selectedCards[0].matchedInfo === this.selectedCards[1].matchedInfo){
-//   this.matched.push(this.selectedCards);
-// }
-//   }
+  }
 }
 
-removeSelected(card){
+
+  removeSelected(card){
   if(this.selectedCards[0].matchedInfo !== this.selectedCards[1].matchedInfo){
     this.selectedCards[0].selected = false;
     this.selectedCards[1].selected = false;
     this.selectedCards = [];
   }
 }
-
-// moveToMatched(){
-//   for(var i = 0; i < this.selectedCards.length; i++){
-//   if(this.selectedCards[i].matchedInfo === this.selectedCards[i].matchedInfo){
-//     this.matched.push(this.selectedCards[i])
-//     }
-//   }
-// }
 
 addCards(){
 
