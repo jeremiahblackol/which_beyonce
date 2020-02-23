@@ -43,7 +43,24 @@ for (var i = 0; i < deck.cards.length; i++){
 }
 
 
+function chooseCard() {
+  for(var i = 0; i < deck.cards.length; i++){
+    if(event.target.classList.contains(deck.cards[i].style)) {
+      event.target.src = deck.cards[i].matchedInfo;
+      deck.checkSelected(deck.cards[i], event.target);
+    }
+  }
+}
 
+
+function removeFromArray(card) {
+  if (!card.selected) {
+    deck.selectedCards.splice(deck.selectedCards.indexOf(card));
+  }
+}
+
+
+// I left these incase y'all don't like the new set up
 // function chooseCard() {
 //   for(var i = 0; i < deck.cards.length; i++){
 //     console.log('poop');
@@ -58,27 +75,19 @@ for (var i = 0; i < deck.cards.length; i++){
 //   }
 // }
 
-function chooseCard() {
-  for(var i = 0; i < deck.cards.length; i++){
-    if(event.target.classList.contains(deck.cards[i].style)) {
-      deck.checkSelected(deck.cards[i]);
-      event.target.src = deck.cards[i].matchedInfo;
-    }
-  }
-}
 
 
-function removeCardFromSelected(event){
-  for(var i = 0; i < deck.cards.length; i++){
-  if(event.target.classList.contains(deck.cards[i].style) && event.target.src !==  deck.cards[i].matchedInfo) {
-    event.target.src = 'assets/Wu-Tang-Clan-logo.jpg';
-     deck.removeSelected();
-   } else {
-     deck.matched.push(deck.selectedCards[0]);
-     deck.matched.push(deck.selectedCards[1]);
-   }
-   }
-}
+// function removeCardFromSelected(event){
+//   for(var i = 0; i < deck.cards.length; i++){
+//   if(event.target.classList.contains(deck.cards[i].style) && event.target.src !==  deck.cards[i].matchedInfo) {
+//     event.target.src = 'assets/Wu-Tang-Clan-logo.jpg';
+//      deck.removeSelected();
+//    } else {
+//      deck.matched.push(deck.selectedCards[0]);
+//      deck.matched.push(deck.selectedCards[1]);
+//    }
+//    }
+// }
 
 
 function checkMatched(){

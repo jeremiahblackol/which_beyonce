@@ -9,30 +9,42 @@ shuffle(){
 
 }
 
-checkSelected(card) {
-  // if(deck.selectedCards.length < 2)
-  if(card.selected) {
+checkSelected(card, event) {
+if(card.selected) {
     card.selected = false;
-    this.removeFromArray(card)
+    event.src = 'assets/Wu-Tang-Clan-logo.jpg';
+    removeFromArray(card);
   } else {
   card.selected = true;
+  // this.cards.splice(this.selectedCards.indexOf(card));
   this.selectedCards.push(card);
-  card.src = 'assets/Wu-Tang-Clan-logo.jpg';
   }
 }
 
 
 removeSelected(card){
   if(this.selectedCards[0].matchedInfo !== this.selectedCards[1].matchedInfo) {
-    this.removeFromArray(card);
+    removeFromArray(card);
+  } else {
+    this.matched.push(card);
+    removeFromArray(card);
   }
 }
 
-removeFromArray(card) {
-  if (!card.selected) {
-    this.selectedCards.splice(this.selectedCards.indexOf(card));
-  }
-}
+// I left these incase y'all don't like the new set up
+
+// removeFromArray(card) {
+//   if (!card.selected) {
+//     this.selectedCards.splice(this.selectedCards.indexOf(card));
+//   }
+// }
+
+// removeFromArray(card) {
+//   if (!card.selected) {
+//     this.cards.push(card);
+//     this.selectedCards.splice(this.selectedCards.indexOf(card));
+//   }
+// }
 
 addCards(){
 
