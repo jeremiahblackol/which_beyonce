@@ -9,6 +9,7 @@ shuffle(){
 
 }
 
+
 checkSelected(card, event) {
 if(card.selected) {
     card.selected = false;
@@ -16,8 +17,8 @@ if(card.selected) {
     removeFromArray(card);
   } else {
   card.selected = true;
-  // this.cards.splice(this.selectedCards.indexOf(card));
   this.selectedCards.push(card);
+  this.numSelected(card, event);
   }
 }
 
@@ -31,6 +32,13 @@ removeSelected(card){
   }
 }
 
+numSelected(card, event) {
+  var numSelected = this.cards.filter(card => card.selected === true).length;
+  if (numSelected > 2){
+    event.src = 'assets/Wu-Tang-Clan-logo.jpg';
+    card.selected = false;
+  }
+}
 // I left these incase y'all don't like the new set up
 
 // removeFromArray(card) {
