@@ -47,10 +47,24 @@ function chooseCard() {
   for(var i = 0; i < deck.cards.length; i++){
     if(event.target.classList.contains(deck.cards[i].style)) {
       event.target.src = deck.cards[i].matchedInfo;
-      deck.checkSelected(deck.cards[i], event.target);
+      cardFlip(deck.cards[i], event.target);
     }
   }
 }
+
+function cardFlip(card, event) {
+  if(card.selected) {
+    card.selected = false;
+    event.src = 'assets/Wu-Tang-Clan-logo.jpg';
+    removeFromArray(card);
+  } else {
+  card.selected = true;
+  deck.selectedCards.push(card);
+  deck.numSelected(card, event);
+  deck.checkSelected(card);
+  }
+}
+
 
 
 function removeFromArray(card) {

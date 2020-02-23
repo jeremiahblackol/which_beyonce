@@ -9,18 +9,39 @@ shuffle(){
 
 }
 
+checkSelected(card) {
+  var merge = this.matched.concat(this.selectedCards);
+  if (this.selectedCards.length === 2 && this.selectedCards[0].matchedInfo === this.selectedCards[1].matchedInfo ){
+    this.selectedCards[0].matched = true;
+    this.selectedCards[1].matched = true;
+    this.matched = merge;
+    this.selectedCards[0].selected = false;
+    this.selectedCards[1].selected = false;
+    console.log(this.matched);
+    // deck.selectedCards.splice(deck.selectedCards.indexOf(card));
+    // console.log(this.selectedCards);
 
-checkSelected(card, event) {
-if(card.selected) {
-    card.selected = false;
-    event.src = 'assets/Wu-Tang-Clan-logo.jpg';
-    removeFromArray(card);
-  } else {
-  card.selected = true;
-  this.selectedCards.push(card);
-  this.numSelected(card, event);
+  // console.log(this.selectedCards[0].matchedInfo);
+  // console.log(card.matchedInfo);
+} else {
+  console.log('no match');
   }
 }
+
+
+
+
+// checkSelected(card, event) {
+// if(card.selected) {
+//     card.selected = false;
+//     event.src = 'assets/Wu-Tang-Clan-logo.jpg';
+//     removeFromArray(card);
+//   } else if (!card.selected && ) {
+//   card.selected = true;
+//   this.selectedCards.push(card);
+//   this.numSelected(card, event);
+//   }
+// }
 
 
 removeSelected(card){
