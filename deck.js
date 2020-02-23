@@ -8,24 +8,29 @@ class Deck {
 shuffle(){
 
 }
-  checkSelected(card){
-  if(this.selectedCards.length === 0){
+
+checkSelected(card) {
+  // if(deck.selectedCards.length < 2)
+  if(card.selected) {
+    card.selected = false;
+    this.removeFromArray(card)
+  } else {
   card.selected = true;
   this.selectedCards.push(card);
-  } else if (this.selectedCards.length === 1) {
-  card.selected = true;
-  this.selectedCards.push(card);
-  } else if (this.selectedCards[0].matchedInfo !== card.matchedInfo){
-  this.removeSelected();
+  card.src = 'assets/Wu-Tang-Clan-logo.jpg';
   }
 }
 
 
-  removeSelected(card){
-  if(this.selectedCards[0].matchedInfo !== this.selectedCards[1].matchedInfo){
-    this.selectedCards[0].selected = false;
-    this.selectedCards[1].selected = false;
-    this.selectedCards = [];
+removeSelected(card){
+  if(this.selectedCards[0].matchedInfo !== this.selectedCards[1].matchedInfo) {
+    this.removeFromArray(card);
+  }
+}
+
+removeFromArray(card) {
+  if (!card.selected) {
+    this.selectedCards.splice(this.selectedCards.indexOf(card));
   }
 }
 

@@ -11,7 +11,6 @@ window.onload = invokeDeck();
 function invokeDeck() {
   deck.createDeck();
   addStyle();
-  console.log(deck.cards);
   addCardsToDOM();
 }
 
@@ -35,7 +34,6 @@ function addStyle(){
 
 function addCardsToDOM(){
 for (var i = 0; i < deck.cards.length; i++){
-  console.log(deck.cards[i]);
   rightSide.insertAdjacentHTML('beforeend',
   `<div class=${deck.cards[i].style}>
   <img class=${deck.cards[i].style}
@@ -44,13 +42,27 @@ for (var i = 0; i < deck.cards.length; i++){
   }
 }
 
+
+
+// function chooseCard() {
+//   for(var i = 0; i < deck.cards.length; i++){
+//     console.log('poop');
+//     if(event.target.classList.contains(deck.cards[i].style) && deck.selectedCards.length === 2) {
+//       event.target.src = 'assets/Wu-Tang-Clan-logo.jpg';
+//       deck.removeSelected(event.target);
+//       console.log(deck.selectedCards);
+//     } else if (event.target.classList.contains(deck.cards[i].style)){
+//       event.target.src = deck.cards[i].matchedInfo;
+//       deck.checkSelected(deck.cards[i]);
+//     } else {}
+//   }
+// }
+
 function chooseCard() {
   for(var i = 0; i < deck.cards.length; i++){
-    if(event.target.classList.contains(deck.cards[i].style) && deck.selectedCards.length < 2) {
-      event.target.src = deck.cards[i].matchedInfo;
+    if(event.target.classList.contains(deck.cards[i].style)) {
       deck.checkSelected(deck.cards[i]);
-    } else if (event.target.classList.contains(deck.cards[i].style) && deck.selectedCards.length === 2){
-          event.target.src = 'assets/Wu-Tang-Clan-logo.jpg';
+      event.target.src = deck.cards[i].matchedInfo;
     }
   }
 }
