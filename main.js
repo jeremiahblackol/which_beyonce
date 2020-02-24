@@ -47,25 +47,12 @@ function chooseCard() {
   for(var i = 0; i < deck.cards.length; i++){
     if(event.target.classList.contains(deck.cards[i].style)) {
       event.target.src = deck.cards[i].matchedInfo;
-      cardFlip(deck.cards[i], event.target);
+      // cardFlip(deck.cards[i], event.target);
+      checkSelected(deck.cards[i], event.target);
+
     }
   }
 }
-
-function cardFlip(card, event) {
-  if(card.selected) {
-    card.selected = false;
-    event.src = 'assets/Wu-Tang-Clan-logo.jpg';
-    removeFromArray(card);
-  } else {
-  card.selected = true;
-  deck.selectedCards.push(card);
-  deck.numSelected(card, event);
-  deck.checkSelected(card);
-  }
-}
-
-
 
 function removeFromArray(card) {
   if (!card.selected) {
@@ -73,43 +60,32 @@ function removeFromArray(card) {
   }
 }
 
-
-// I left these incase y'all don't like the new set up
-// function chooseCard() {
-//   for(var i = 0; i < deck.cards.length; i++){
-//     console.log('poop');
-//     if(event.target.classList.contains(deck.cards[i].style) && deck.selectedCards.length === 2) {
-//       event.target.src = 'assets/Wu-Tang-Clan-logo.jpg';
-//       deck.removeSelected(event.target);
-//       console.log(deck.selectedCards);
-//     } else if (event.target.classList.contains(deck.cards[i].style)){
-//       event.target.src = deck.cards[i].matchedInfo;
-//       deck.checkSelected(deck.cards[i]);
-//     } else {}
-//   }
-// }
-
-
-
-// function removeCardFromSelected(event){
-//   for(var i = 0; i < deck.cards.length; i++){
-//   if(event.target.classList.contains(deck.cards[i].style) && event.target.src !==  deck.cards[i].matchedInfo) {
-//     event.target.src = 'assets/Wu-Tang-Clan-logo.jpg';
-//      deck.removeSelected();
-//    } else {
-//      deck.matched.push(deck.selectedCards[0]);
-//      deck.matched.push(deck.selectedCards[1]);
-//    }
-//    }
-// }
-
+function checkSelected(card, event){
+    if (!card.selected){
+      if (deck.selectedCards.length > 1){
+        var removedCard = deck.selectedCards.shift()
+        removedCard.selected = false
+        var removedCardHtml = document.querySelector(`.${removedCard.style} #card`)
+        removedCardHtml.src = 'assets/Wu-Tang-Clan-logo.jpg'
+      }
+      event.src = card.matchedInfo;
+      card.selected = true
+      deck.selectedCards.push(card);
+      deck.moveToMatched()
+    } else {
+      event.src = 'assets/Wu-Tang-Clan-logo.jpg'
+      for (var i = 0; i < deck.selectedCards.length; i++){
+        if (deck.selectedCards[i].style === card.style){
+          deck.selectedCards.splice(i, 1)
+          card.selected = false;
+        }
+      }
+    }
+  }
 
 function checkMatched(){
   deck.moveToMatched();
 }
-
-
-
 
 function restartGame() {
   if(event.target.name === 'play-again' || event.target.name === 'new-game') {

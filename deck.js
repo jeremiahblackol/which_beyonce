@@ -9,24 +9,26 @@ shuffle(){
 
 }
 
-checkSelected(card) {
-  var merge = this.matched.concat(this.selectedCards);
-  if (this.selectedCards.length === 2 && this.selectedCards[0].matchedInfo === this.selectedCards[1].matchedInfo ){
-    this.selectedCards[0].matched = true;
-    this.selectedCards[1].matched = true;
-    this.matched = merge;
-    this.selectedCards[0].selected = false;
-    this.selectedCards[1].selected = false;
-    console.log(this.matched);
-    // deck.selectedCards.splice(deck.selectedCards.indexOf(card));
-    // console.log(this.selectedCards);
-
-  // console.log(this.selectedCards[0].matchedInfo);
-  // console.log(card.matchedInfo);
-} else {
-  console.log('no match');
-  }
-}
+// checkSelected(card) {
+//   var merge = this.matched.concat(this.selectedCards);
+//   if (this.selectedCards.length === 2 && this.selectedCards[0].matchedInfo === this.selectedCards[1].matchedInfo ){
+//     this.selectedCards[0].matched = true;
+//     this.selectedCards[1].matched = true;
+//     this.matched = merge;
+//     this.selectedCards[0].selected = false;
+//     this.selectedCards[1].selected = false;
+//     // console.log(this.matched);
+//     deck.selectedCards.splice(deck.selectedCards.indexOf(card));
+//     // deck.selectedCards.splice(deck.selectedCards[1];
+//
+//     // console.log(this.selectedCards);
+//
+//   // console.log(this.selectedCards[0].matchedInfo);
+//   // console.log(card.matchedInfo);
+// } else {
+//   console.log('no match');
+//   }
+// }
 
 
 
@@ -53,48 +55,56 @@ removeSelected(card){
   }
 }
 
-numSelected(card, event) {
-  var numSelected = this.cards.filter(card => card.selected === true).length;
-  if (numSelected > 2){
-    event.src = 'assets/Wu-Tang-Clan-logo.jpg';
-    card.selected = false;
+moveToMatched() {
+  var merge = this.matched.concat(this.selectedCards);
+    if (this.selectedCards.length === 2 && this.selectedCards[0].matchedInfo
+       ===  this.selectedCards[1].matchedInfo){
+        this.selectedCards[1].matched = true;
+        this.selectedCards[0].matched = true;
+        this.matched = merge;
+        this.selectedCards = [];
+        this.unselectMatched()
+}
+}
+
+unselectMatched(){
+  for (var i = 0; i < this.matched.length; i++){
+    this.matched[i].selected = false
   }
 }
-// I left these incase y'all don't like the new set up
-
-// removeFromArray(card) {
-//   if (!card.selected) {
-//     this.selectedCards.splice(this.selectedCards.indexOf(card));
-//   }
-// }
-
-// removeFromArray(card) {
-//   if (!card.selected) {
-//     this.cards.push(card);
-//     this.selectedCards.splice(this.selectedCards.indexOf(card));
-//   }
-// }
 
 addCards(){
 
 }
 
 createDeck() {
-  var images = [
-    'assets/rza-.jpg',
-    'assets/tumblr_kwq0plYMaS1qzcv0zo1_500.jpg',
-    'assets/ghostface-killah.jpg',
-    'assets/gza-the-lost-art-of-lyricism-op-ed-feat.jpg',
-    'assets/dirty.png',
-    'assets/rza-.jpg',
-    'assets/tumblr_kwq0plYMaS1qzcv0zo1_500.jpg',
-    'assets/ghostface-killah.jpg',
-    'assets/gza-the-lost-art-of-lyricism-op-ed-feat.jpg',
-    'assets/dirty.png'
+    var images = [
+      'assets/rza-.jpg',
+      'assets/tumblr_kwq0plYMaS1qzcv0zo1_500.jpg',
+      'assets/ghostface-killah.jpg',
+      'assets/gza-the-lost-art-of-lyricism-op-ed-feat.jpg',
+      'assets/dirty.png',
+      'assets/rza-.jpg',
+      'assets/tumblr_kwq0plYMaS1qzcv0zo1_500.jpg',
+      'assets/ghostface-killah.jpg',
+      'assets/gza-the-lost-art-of-lyricism-op-ed-feat.jpg',
+      'assets/dirty.png'
+      ];
+    var styles = [
+      'image-slant0',
+      'image-slant1',
+      'image-slant2',
+      'image-slant3',
+      'image-slant4',
+      'image-slant5',
+      'image-slant6',
+      'image-slant7',
+      'image-slant8',
+      'image-slant9',
     ];
-for (var i = 0; i < images.length; i++) {
-  var card = new Card(images[i]);
-  this.cards.push(card);
-  }
- }
+    for (var i = 0; i < images.length; i++) {
+        var card = new Card(images[i], styles[i]);
+        this.cards.push(card);
+      }
+    }
 }
