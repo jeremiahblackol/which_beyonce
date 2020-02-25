@@ -11,27 +11,8 @@ window.onload = invokeDeck();
 
 function invokeDeck() {
   deck.createDeck();
-  addStyle();
   addCardsToDOM();
   countUp(time);
-}
-
-function addStyle(){
- var styles = [
-   'image-slant1',
-   'image-slant2',
-   'image-slant3',
-   'image-slant4',
-   'image-slant5',
-   'image-slant6',
-   'image-slant7',
-   'image-slant8',
-   'image-slant9',
-   'image-slant10'
- ];
- for(var i = 0; i < styles.length; i++){
-   deck.cards[i].style = styles[i];
- }
 }
 
 function addCardsToDOM(){
@@ -56,9 +37,9 @@ function countUp(a) {
   var seconds = time % 60;
   winnerTime.innerText = `${minute} minutes ${seconds} seconds`;
   time++;
-  if (deck.displayMatchedCards === 5) {
-    clearInterval(timer);
     }
+    if (deck.displayMatchedCards === 5) {
+      clearInterval(timer);
   }
 }
 
