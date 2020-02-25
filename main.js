@@ -13,6 +13,7 @@ function invokeDeck() {
   deck.createDeck();
   addStyle();
   addCardsToDOM();
+  countUp(time);
 }
 
 function addStyle(){
@@ -43,6 +44,23 @@ for (var i = 0; i < deck.cards.length; i++){
   }
 }
 
+var timer = setInterval(countUp, 1000, time);
+var time = 0;
+
+function countUp(a) {
+  var winnerTime = document.querySelector('.congrats3');
+  if(time < 60) {
+  winnerTime.innerText = `${time++} seconds`;
+} else if (time >= 60 ){
+  var minute = Math.floor(time / 60);
+  var seconds = time % 60;
+  winnerTime.innerText = `${minute} minutes ${seconds} seconds`;
+  time++;
+  if (deck.displayMatchedCards === 5) {
+    clearInterval(timer);
+    }
+  }
+}
 
 function chooseCard() {
   deck.gameStarted = true;
@@ -55,6 +73,7 @@ function chooseCard() {
   }
   removeFromDOM();
 }
+
 
 function removeFromArray(card) {
   if (!card.selected) {
