@@ -1,5 +1,6 @@
 var rightSide = document.querySelector('.right-side');
-var winnerPage = document.querySelector('.winner-page')
+var leftSide = document.querySelector('.left-side');
+var winnerPage = document.querySelector('.winner-page');
 var deck = new Deck()
 
 
@@ -91,6 +92,7 @@ function removeFromDOM () {
     matchCounter();
     deck.matched = [];
   }
+
 function checkMatched(){
   deck.moveToMatched();
 }
@@ -100,6 +102,18 @@ function matchCounter () {
   if (deck.matched.length > 1){
     deck.displayMatchedCards++;
   counter.innerText = deck.displayMatchedCards;
+  console.log(deck.displayMatchedCards);
+  displayWinnerPage();
+  }
+}
+
+function displayWinnerPage() {
+  if(deck.displayMatchedCards === 5) {
+    rightSide.style.display = 'none';
+    leftSide.style.display = 'none';
+    winnerPage.style.display = ('inline');
+  } else {
+    return;
   }
 }
 
