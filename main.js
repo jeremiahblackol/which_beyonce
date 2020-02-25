@@ -45,6 +45,7 @@ for (var i = 0; i < deck.cards.length; i++){
 
 
 function chooseCard() {
+  deck.gameStarted = true;
   for(var i = 0; i < deck.cards.length; i++){
     if(event.target.classList.contains(deck.cards[i].style)) {
       event.target.src = deck.cards[i].matchedInfo;
