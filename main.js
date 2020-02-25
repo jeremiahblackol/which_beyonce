@@ -49,9 +49,9 @@ function chooseCard() {
       event.target.src = deck.cards[i].matchedInfo;
       // cardFlip(deck.cards[i], event.target);
       checkSelected(deck.cards[i], event.target);
-
     }
   }
+  removeFromDOM();
 }
 
 function removeFromArray(card) {
@@ -83,8 +83,24 @@ function checkSelected(card, event){
     }
   }
 
+function removeFromDOM () {
+  for ( var i = 0; i < deck.matched.length; i++){
+    var cardStyle = document.querySelector(`.${deck.matched[i].style}`);
+      cardStyle.remove();
+    }
+    matchCounter();
+    deck.matched = [];
+  }
 function checkMatched(){
   deck.moveToMatched();
+}
+
+function matchCounter () {
+  var counter = document.querySelector('.match-count');
+  if (deck.matched.length > 1){
+    deck.displayMatchedCards++;
+  counter.innerText = deck.displayMatchedCards;
+  }
 }
 
 function restartGame() {

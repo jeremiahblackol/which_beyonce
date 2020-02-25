@@ -2,7 +2,8 @@ class Deck {
   constructor(){
     this.selectedCards = [];
     this.matched = [];
-    this.cards = []
+    this.cards = [];
+    this.displayMatchedCards = 0;
   }
 
 shuffle(){
