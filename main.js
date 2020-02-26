@@ -42,6 +42,19 @@ function countUp(a) {
       clearInterval(timer);
   }
 }
+var imageNum = 0;
+
+function moveToMatchedLeft() {
+  if(deck.matched.length > 0){
+    imageNum += 1;
+    var matchedImageSection = document.querySelector(`#image${imageNum}`)
+    var savedMatch = null;
+    console.log(imageNum)
+    savedMatch = deck.matched[0].matchedInfo;
+  matchedImageSection.insertAdjacentHTML('beforeend',
+`<img class = 'small-image' src = ${savedMatch}>`);
+  }
+}
 
 function chooseCard() {
   deck.gameStarted = true;
@@ -52,6 +65,7 @@ function chooseCard() {
       checkSelected(deck.cards[i], event.target);
     }
   }
+  moveToMatchedLeft();
   removeFromDOM();
 }
 
@@ -103,7 +117,6 @@ function matchCounter () {
   if (deck.matched.length > 1){
     deck.displayMatchedCards++;
   counter.innerText = deck.displayMatchedCards;
-  console.log(deck.displayMatchedCards);
   displayWinnerPage();
   }
 }
