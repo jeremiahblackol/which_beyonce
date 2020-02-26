@@ -40,9 +40,11 @@ function countUp(a) {
     }
     if (deck.displayMatchedCards === 5) {
       clearInterval(timer);
+      // bestTimes.push(time - 1);
   }
 }
-var imageNum = 0;
+
+var imageNum =   0;
 
 function moveToMatchedLeft() {
   if(deck.matched.length > 0){
@@ -112,13 +114,13 @@ function checkMatched(){
   deck.moveToMatched();
 }
 
+var counter = document.querySelector('.match-count');
 function matchCounter () {
-  var counter = document.querySelector('.match-count');
   if (deck.matched.length > 1){
     deck.displayMatchedCards++;
   counter.innerText = deck.displayMatchedCards;
   displayWinnerPage();
-  }
+}
 }
 
 function displayWinnerPage() {
@@ -126,15 +128,34 @@ function displayWinnerPage() {
     rightSide.style.display = 'none';
     leftSide.style.display = 'none';
     winnerPage.style.display = ('inline');
+    counter.innerText = 0;
+
   } else {
     return;
   }
 }
 
+var bestTimes = [];
+// function displayBestTimes () {
+//   // bestTimes.sort(function(a, b)(return a-b));
+// }
+
+
+
 function restartGame() {
   if(event.target.name === 'play-again' || event.target.name === 'new-game') {
-    console.log(event.target);
-  } else {
-    console.log('nope!');
+    deck.cards = [];
+    deck.displayMatchedCards = 0;
+    deck.gameStarted = false;
+    invokeDeck();
+    resetMatchedImages();
+    rightSide.style.display = 'flex';
+    leftSide.style.display = 'inline';
+    winnerPage.style.display = ('none');
   }
+}
+// Working on clearing the images from the left side of the page
+function resetMatchedImages () {
+var smallImages = document.querySelectorAll('.small-image')
+  smallImages.classList.remove('small-image');
 }
