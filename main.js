@@ -1,5 +1,6 @@
 var rightSide = document.querySelector('.right-side');
-var winnerPage = document.querySelector('.winner-page')
+var leftSide = document.querySelector('.left-side');
+var winnerPage = document.querySelector('.winner-page');
 var deck = new Deck()
 
 
@@ -10,26 +11,8 @@ window.onload = invokeDeck();
 
 function invokeDeck() {
   deck.createDeck();
-  addStyle();
   addCardsToDOM();
-}
-
-function addStyle(){
- var styles = [
-   'image-slant1',
-   'image-slant2',
-   'image-slant3',
-   'image-slant4',
-   'image-slant5',
-   'image-slant6',
-   'image-slant7',
-   'image-slant8',
-   'image-slant9',
-   'image-slant10'
- ];
- for(var i = 0; i < styles.length; i++){
-   deck.cards[i].style = styles[i];
- }
+  countUp(time);
 }
 
 function addCardsToDOM(){
@@ -42,8 +25,41 @@ for (var i = 0; i < deck.cards.length; i++){
   }
 }
 
+var timer = setInterval(countUp, 1000, time);
+var time = 0;
+
+function countUp(a) {
+  var winnerTime = document.querySelector('.congrats3');
+  if(time < 60) {
+  winnerTime.innerText = `${time++} seconds`;
+} else if (time >= 60 ){
+  var minute = Math.floor(time / 60);
+  var seconds = time % 60;
+  winnerTime.innerText = `${minute} minutes ${seconds} seconds`;
+  time++;
+    }
+    if (deck.displayMatchedCards === 5) {
+      clearInterval(timer);
+      // bestTimes.push(time - 1);
+  }
+}
+
+var imageNum =   0;
+
+function moveToMatchedLeft() {
+  if(deck.matched.length > 0){
+    imageNum += 1;
+    var matchedImageSection = document.querySelector(`#image${imageNum}`)
+    var savedMatch = null;
+    console.log(imageNum)
+    savedMatch = deck.matched[0].matchedInfo;
+  matchedImageSection.insertAdjacentHTML('beforeend',
+`<img class = 'small-image' src = ${savedMatch}>`);
+  }
+}
 
 function chooseCard() {
+  deck.gameStarted = true;
   for(var i = 0; i < deck.cards.length; i++){
     if(event.target.classList.contains(deck.cards[i].style)) {
       event.target.src = deck.cards[i].matchedInfo;
@@ -51,8 +67,10 @@ function chooseCard() {
       checkSelected(deck.cards[i], event.target);
     }
   }
+  moveToMatchedLeft();
   removeFromDOM();
 }
+
 
 function removeFromArray(card) {
   if (!card.selected) {
@@ -91,22 +109,53 @@ function removeFromDOM () {
     matchCounter();
     deck.matched = [];
   }
+
 function checkMatched(){
   deck.moveToMatched();
 }
 
+var counter = document.querySelector('.match-count');
 function matchCounter () {
-  var counter = document.querySelector('.match-count');
   if (deck.matched.length > 1){
     deck.displayMatchedCards++;
   counter.innerText = deck.displayMatchedCards;
+  displayWinnerPage();
+}
+}
+
+function displayWinnerPage() {
+  if(deck.displayMatchedCards === 5) {
+    rightSide.style.display = 'none';
+    leftSide.style.display = 'none';
+    winnerPage.style.display = ('inline');
+    counter.innerText = 0;
+
+  } else {
+    return;
   }
 }
 
+var bestTimes = [];
+// function displayBestTimes () {
+//   // bestTimes.sort(function(a, b)(return a-b));
+// }
+
+
+
 function restartGame() {
   if(event.target.name === 'play-again' || event.target.name === 'new-game') {
-    console.log(event.target);
-  } else {
-    console.log('nope!');
+    deck.cards = [];
+    deck.displayMatchedCards = 0;
+    deck.gameStarted = false;
+    invokeDeck();
+    resetMatchedImages();
+    rightSide.style.display = 'flex';
+    leftSide.style.display = 'inline';
+    winnerPage.style.display = ('none');
   }
+}
+// Working on clearing the images from the left side of the page
+function resetMatchedImages () {
+var smallImages = document.querySelectorAll('.small-image')
+  smallImages.classList.remove('small-image');
 }

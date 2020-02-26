@@ -113,34 +113,44 @@ header {
 }
 
 .image-slant1 {
-  transform: translatex(5em) rotate(10deg);
+  transform: translatex(2em) rotate(10deg);
+  position: absolute;
 }
 .image-slant2 {
-  transform: translateY(13em) rotate(-9deg);
+  transform: translateX(8em) translateY(7em) rotate(-9deg);
+  position: absolute;
 }
 .image-slant3 {
-  transform: translateY(22em) rotate(23deg);
+  transform: translateY(6em) rotate(13deg);
+  position: absolute;
 }
 .image-slant4 {
-  transform: translateX(-4em) rotate(7deg);
+  transform: translateX(-9em) rotate(7deg);
+  position: absolute;
 }
 .image-slant5 {
-  transform: translateY(6em) rotate(-13deg);
+  transform: translateX(7em)translateY(-5em) rotate(-13deg);
+  position: absolute;
 }
 .image-slant6 {
-  transform: translateY(-5em)rotate(-6deg);
+  transform: translateX(-9em)translateY(-9em)rotate(-6deg);
+  position: absolute;
 }
 .image-slant7 {
-  transform: translateY(8em) translateX(-4em) rotate(15deg);
+  transform: translateY(7em) translateX(-12em) rotate(15deg);
+  position: absolute;
 }
 .image-slant8 {
-  transform: translateY(21em) translateY(-25em) rotate(17deg);
+  transform: translateX(-14em) rotate(17deg);
+  position: absolute;
 }
 .image-slant9 {
-  transform: translateX(45em) rotate(-13deg);
+  transform: translateX(3em) translateY(-10em) rotate(-13deg);
+  position: absolute;
 }
 .image-slant10 {
-  transform: rotate(-6deg);
+  transform: translateX(11em)rotate(-6deg);
+  position: absolute;
 }
 .wu-tang-logo {
   height: 5em;
@@ -167,7 +177,9 @@ header {
 .congrats2{
   color:white;
 }
-
+.congrats3{
+  color:white;
+}
 h2{
   font-size: 6em;
   margin: .5em;
