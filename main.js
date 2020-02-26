@@ -26,6 +26,7 @@ for (var i = 0; i < deck.cards.length; i++){
   <img class=${deck.cards[i].style}
   id="card"src= assets/Wu-Tang-Clan-logo.jpg>
   </div>`)
+
   }
 }
 
@@ -143,9 +144,9 @@ function displayWinnerPage() {
   }
 }
 
-// function displayBestTimes () {
-//   // bestTimes.sort(function(a, b)(return a-b));
-// }
+function displayBestTimes () {
+  // bestTimes.sort(function(a, b)(return a-b));
+}
 
 
 
@@ -159,6 +160,7 @@ function restartGame() {
     rightSide.style.display = 'flex';
     leftSide.style.display = 'inline';
     winnerPage.style.display = ('none');
+    location.reload(false);
   }
 }
 
