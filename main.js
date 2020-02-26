@@ -1,7 +1,11 @@
 var rightSide = document.querySelector('.right-side');
 var leftSide = document.querySelector('.left-side');
 var winnerPage = document.querySelector('.winner-page');
+var counter = document.querySelector('.match-count');
 var deck = new Deck()
+var bestTimes = [];
+var time = 0;
+var imageNum = 0;
 
 
 rightSide.addEventListener('click', chooseCard);
@@ -26,7 +30,6 @@ for (var i = 0; i < deck.cards.length; i++){
 }
 
 var timer = setInterval(countUp, 1000, time);
-var time = 0;
 
 function countUp(a) {
   var winnerTime = document.querySelector('.congrats3');
@@ -40,11 +43,10 @@ function countUp(a) {
     }
     if (deck.displayMatchedCards === 5) {
       clearInterval(timer);
+
       // bestTimes.push(time - 1);
   }
 }
-
-var imageNum =   0;
 
 function moveToMatchedLeft() {
   if(deck.matched.length > 0){
@@ -71,32 +73,39 @@ function chooseCard() {
   removeFromDOM();
 }
 
-
 function removeFromArray(card) {
   if (!card.selected) {
     deck.selectedCards.splice(deck.selectedCards.indexOf(card));
   }
 }
 
+function moveSelectedCards (event) {
+if (deck.selectedCards.length > 1){
+  var removedCard = deck.selectedCards.shift()
+  removedCard.selected = false
+  var removedCardHtml = document.querySelector(`.${removedCard.style} #card`)
+  removedCardHtml.src = 'assets/Wu-Tang-Clan-logo.jpg'
+  }
+}
+
 function checkSelected(card, event){
     if (!card.selected){
-      if (deck.selectedCards.length > 1){
-        var removedCard = deck.selectedCards.shift()
-        removedCard.selected = false
-        var removedCardHtml = document.querySelector(`.${removedCard.style} #card`)
-        removedCardHtml.src = 'assets/Wu-Tang-Clan-logo.jpg'
-      }
+      moveSelectedCards(event);
       event.src = card.matchedInfo;
       card.selected = true
       deck.selectedCards.push(card);
-      deck.moveToMatched()
+      deck.moveToMatched();
     } else {
       event.src = 'assets/Wu-Tang-Clan-logo.jpg'
-      for (var i = 0; i < deck.selectedCards.length; i++){
-        if (deck.selectedCards[i].style === card.style){
-          deck.selectedCards.splice(i, 1)
-          card.selected = false;
-        }
+      validateCardStyle(card);
+    }
+  }
+
+  function validateCardStyle (card) {
+    for (var i = 0; i < deck.selectedCards.length; i++){
+    if (deck.selectedCards[i].style === card.style){
+      deck.selectedCards.splice(i, 1)
+      card.selected = false;
       }
     }
   }
@@ -108,19 +117,18 @@ function removeFromDOM () {
     }
     matchCounter();
     deck.matched = [];
-  }
+}
 
 function checkMatched(){
   deck.moveToMatched();
 }
 
-var counter = document.querySelector('.match-count');
 function matchCounter () {
   if (deck.matched.length > 1){
     deck.displayMatchedCards++;
   counter.innerText = deck.displayMatchedCards;
   displayWinnerPage();
-}
+  }
 }
 
 function displayWinnerPage() {
@@ -135,7 +143,6 @@ function displayWinnerPage() {
   }
 }
 
-var bestTimes = [];
 // function displayBestTimes () {
 //   // bestTimes.sort(function(a, b)(return a-b));
 // }
@@ -148,7 +155,7 @@ function restartGame() {
     deck.displayMatchedCards = 0;
     deck.gameStarted = false;
     invokeDeck();
-    resetMatchedImages();
+    // resetMatchedImages();
     rightSide.style.display = 'flex';
     leftSide.style.display = 'inline';
     winnerPage.style.display = ('none');
