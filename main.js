@@ -155,14 +155,18 @@ function restartGame() {
     deck.displayMatchedCards = 0;
     deck.gameStarted = false;
     invokeDeck();
-    // resetMatchedImages();
+    resetMatchedImages();
     rightSide.style.display = 'flex';
     leftSide.style.display = 'inline';
     winnerPage.style.display = ('none');
   }
 }
-// Working on clearing the images from the left side of the page
+
 function resetMatchedImages () {
-var smallImages = document.querySelectorAll('.small-image')
-  smallImages.classList.remove('small-image');
+  var smallImages = document.querySelectorAll('.small-image')
+  var smallImageArray = Array.from(smallImages);
+  for (var i = 0; i < smallImageArray.length; i++) {
+    console.log(smallImageArray);
+    smallImageArray[i].innerHTML = `<div class = 'small-image'></div>`
+  }
 }
