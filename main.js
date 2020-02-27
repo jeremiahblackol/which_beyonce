@@ -26,6 +26,7 @@ for (var i = 0; i < deck.cards.length; i++){
   <img class=${deck.cards[i].style}
   id="card"src= assets/Wu-Tang-Clan-logo.jpg>
   </div>`)
+
   }
 }
 
@@ -43,8 +44,7 @@ function countUp(a) {
     }
     if (deck.displayMatchedCards === 5) {
       clearInterval(timer);
-
-      // bestTimes.push(time - 1);
+      bestTimes.push(time);
   }
 }
 
@@ -137,36 +137,19 @@ function displayWinnerPage() {
     leftSide.style.display = 'none';
     winnerPage.style.display = ('inline');
     counter.innerText = 0;
-
   } else {
     return;
   }
 }
-
-// function displayBestTimes () {
-//   // bestTimes.sort(function(a, b)(return a-b));
-// }
-
-
 
 function restartGame() {
   if(event.target.name === 'play-again' || event.target.name === 'new-game') {
     deck.cards = [];
     deck.displayMatchedCards = 0;
     deck.gameStarted = false;
-    invokeDeck();
-    resetMatchedImages();
     rightSide.style.display = 'flex';
     leftSide.style.display = 'inline';
     winnerPage.style.display = ('none');
-  }
-}
-
-function resetMatchedImages () {
-  var smallImages = document.querySelectorAll('.small-image')
-  var smallImageArray = Array.from(smallImages);
-  for (var i = 0; i < smallImageArray.length; i++) {
-    console.log(smallImageArray);
-    smallImageArray[i].innerHTML = `<div class = 'small-image'></div>`
+    location.reload(false);
   }
 }
